@@ -1,5 +1,6 @@
 package study.training.crud.controllers;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,7 @@ public class ProductsController {
             product.setActive(false);
             return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.notFound().build();
+            throw new EntityNotFoundException();
         }
     }
 }
